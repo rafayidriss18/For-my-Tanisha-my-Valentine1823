@@ -3,26 +3,104 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
-    <title>For My Tanisha - My Valentine</title>
+    <title>Valentine's Website</title>
+    <style>
+        body {
+            background-color: #F8D5F8;
+            color: #3C3C3C;
+            font-family: Arial, sans-serif;
+        }
+        header {
+            text-align: center;
+            padding: 20px;
+            background-color: #FFB6C1;
+        }
+        .gallery {
+            display: flex;
+            justify-content: space-around;
+            margin: 20px 0;
+        }
+        .game {
+            margin: 20px;
+            padding: 15px;
+            background-color: #FFE4E1;
+            border-radius: 10px;
+        }
+        footer {
+            text-align: center;
+            padding: 15px;
+            background-color: #FFC0CB;
+        }
+    </style>
 </head>
 <body>
     <header>
-        <h1>Welcome to My Valentine's Day Surprise</h1>
+        <h1>Welcome to My Valentine's Day Celebration!</h1>
     </header>
-    <main>
-        <h2>Love Letters</h2>
-        <div id="letters">
-            <!-- Love letters will be displayed here -->
+    <div id="login">
+        <h2>Password Protected</h2>
+        <input type="password" id="password" placeholder="Enter Password">
+        <button onclick="checkPassword()">Login</button>
+    </div>
+    <div id="content" style="display:none;">
+        <h2>20+ Love Letters</h2>
+        <div id="letters"></div>
+        <h2>Games</h2>
+        <div class="gallery">
+            <div class="game">
+                <h3>Memory Matching</h3>
+                <button onclick="startMemoryMatching()">Play</button>
+            </div>
+            <div class="game">
+                <h3>Love Quiz</h3>
+                <button onclick="startLoveQuiz()">Take a Quiz</button>
+            </div>
+            <div class="game">
+                <h3>Puzzle</h3>
+                <button onclick="startPuzzle()">Solve</button>
+            </div>
         </div>
-        <h2>Interactive Games</h2>
-        <button onclick="startMemoryGame()">Play Memory Matching</button>
-        <button onclick="startLoveQuiz()">Take the Love Quiz</button>
-        <button onclick="startPuzzleGame()">Solve the Puzzle</button>
-    </main>
+        <h2>Memory Gallery</h2>
+        <div class="gallery">
+            <img src="night_sky_kiss.jpg" alt="Night Sky Kiss" style="width: 300px;"/>
+            <img src="promise_ring.jpg" alt="Promise Ring" style="width: 300px;"/>
+        </div>
+    </div>
     <footer>
-        <p>Made with love for my Tanisha</p>
+        <p>&copy; 2023 Rafay Idriss</p>
     </footer>
-    <script src="script.js"></script>
+    <script>
+        const letters = [
+            "Letter 1: (Your heartfelt message)",
+            // Add additional letters accordingly
+        ];
+        function checkPassword() {
+            const passwordInput = document.getElementById('password').value;
+            if(passwordInput === '8th October 2023') {
+                document.getElementById('login').style.display = 'none';
+                document.getElementById('content').style.display = 'block';
+                displayLetters();
+            } else {
+                alert('Wrong Password!');
+            }
+        }
+        function displayLetters() {
+            const lettersDiv = document.getElementById('letters');
+            letters.forEach(letter => {
+                const p = document.createElement('p');
+                p.innerText = letter;
+                lettersDiv.appendChild(p);
+            });
+        }
+        function startMemoryMatching() {
+            // Implement memory matching game
+        }
+        function startLoveQuiz() {
+            // Implement love quiz game
+        }
+        function startPuzzle() {
+            // Implement puzzle game
+        }
+    </script>
 </body>
 </html>
