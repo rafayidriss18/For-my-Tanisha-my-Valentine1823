@@ -3,55 +3,110 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Valentine's Day Celebration</title>
+    <title>Tanisha's Valentine's Page</title>
     <style>
         body {
-            background: linear-gradient(to right, pink, lightcoral);
-            color: white;
             font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom right, lightyellow, pink);
+            color: wine;
+            overflow: hidden;
+        }
+        header, footer {
+            background: rgba(255, 192, 203, 0.9);
             text-align: center;
             padding: 20px;
         }
-        .header {
-            font-size: 2em;
-            margin: 20px;
+        nav {
+            margin: 20px 0;
         }
-        .game {
-            margin: 10px;
+        nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: wine;
         }
+        .container {
+            padding: 20px;
+        }
+        h1 {
+            color: lilac;
+        }
+        .hidden {
+            display: none;
+        }
+        .mood-letter { margin: 10px 0; padding: 10px; background: white; border-radius: 5px; }
     </style>
 </head>
 <body>
-    <div class="header">Welcome to the Valentine's Day Celebration!</div>
-    <div>
-        <h2>Password Login</h2>
+    <header>
+        <h1>Welcome to Tanisha’s Valentine’s Page</h1>
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#letters">Love Letters</a>
+            <a href="#games">Games</a>
+            <a href="#memories">Memories</a>
+        </nav>
+    </header>
+    <div class="container" id="home">
+        <h2>Your Personal Valentine</h2>
+        <p>This is a special space filled with love letters, games, and personal memories that celebrate our time together.</p>
         <form id="loginForm">
-            <input type="password" placeholder="Enter password" required />
+            <label for="password">Enter Password:</label>
+            <input type="password" id="password" required>
             <button type="submit">Login</button>
         </form>
     </div>
-    <div class="game">
+    <div class="container hidden" id="letters">
         <h2>Mood-Based Love Letters</h2>
-        {/* Implementation Details Here */}
+        <div class="mood-letter" id="happy">Happy Letter: You make me feel alive!</div>
+        <div class="mood-letter" id="sad">Sad Letter: I miss you more than words can say.</div>
+        <div class="mood-letter" id="angry">Angry Letter: I feel frustrated sometimes, but I still love you.</div>
+        <div class="mood-letter" id="missing">Missing You: I think about you every day.</div>
+        <div class="mood-letter" id="hug">Hug Letter: I wish I could hug you right now.</div>
+        <div class="mood-letter" id="soft">Soft Letter: Your touch warms my heart.</div>
+        <!-- Add more letters as needed -->
     </div>
-    <div class="game">
-        <h2>Memory Match Game</h2>
-        {/* Implementation Details Here */}
+    <div class="container hidden" id="games">
+        <h2>Interactive Games</h2>
+        <div><button onclick="startMemoryGame()">Memory Matching Game</button></div>
+        <div><button onclick="startLoveQuiz()">Love Quiz</button></div>
+        <div><button onclick="startPuzzleGame()">Puzzle Game</button></div>
     </div>
-    <div class="game">
-        <h2>Love Quiz</h2>
-        {/* Implementation Details Here */}
+    <div class="container hidden" id="memories">
+        <h2>Our Memories</h2>
+        <p>First kiss under the night sky, and the special promise ring surprise.</p>
     </div>
-    <div class="game">
-        <h2>Puzzle Game</h2>
-        {/* Implementation Details Here */}
-    </div>
-    <div class="decorations">
-        <img src="butterfly.png" alt="Butterfly" />
-        <img src="heart.png" alt="Heart" />
-    </div>
+    <footer>
+        <p>Decorated with love: butterflies, makeup, purses, and art.</p>
+    </footer>
     <script>
-        // JavaScript for handling login and games here
+        const loginForm = document.getElementById('loginForm');
+        const hiddenSections = document.querySelectorAll('.hidden');
+
+        loginForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const password = document.getElementById('password').value;
+            if(password === 'your_password') { // Replace with actual password logic
+                hiddenSections.forEach(section => section.classList.remove('hidden'));
+                loginForm.classList.add('hidden');
+            } else {
+                alert('Incorrect password!');
+            }
+        });
+
+        function startMemoryGame() {
+            alert('Starting Memory Matching Game!');
+            // Implement game functionality
+        }
+
+        function startLoveQuiz() {
+            alert('Starting Love Quiz!');
+            // Implement quiz functionality
+        }
+
+        function startPuzzleGame() {
+            alert('Starting Puzzle Game!');
+            // Implement puzzle functionality
+        }
     </script>
 </body>
 </html>
