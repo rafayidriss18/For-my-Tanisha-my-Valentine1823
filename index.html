@@ -52,6 +52,7 @@
         .password-screen.hidden {
             opacity: 0;
             visibility: hidden;
+            pointer-events: none;
         }
 
         .password-container {
@@ -112,6 +113,7 @@
             color: #c70039;
             margin-top: 1rem;
             display: none;
+            font-weight: bold;
         }
 
         /* Main Content */
@@ -507,7 +509,7 @@
         <div class="password-container">
             <h1>💕 for tanisha 💕</h1>
             <p>enter the date when our love story began</p>
-            <input type="password" class="password-input" id="passwordInput" placeholder="date format">
+            <input type="text" class="password-input" id="passwordInput" placeholder="8thOctober2023">
             <button class="password-btn" onclick="checkPassword()">unlock my heart</button>
             <div class="error-message" id="errorMessage">wrong password sweetheart try again</div>
         </div>
@@ -747,7 +749,7 @@
         // Quiz questions
         const quizQuestions = [
             {
-                question: "what is my favorite color",
+                question: "what is one of my favorite colors",
                 options: ["baby blue", "deep purple", "soft pink", "sky yellow"],
                 correct: 2
             },
@@ -793,13 +795,48 @@
             }
         ];
 
-        // Initialize
+        // Password check function
+        function checkPassword() {
+            const passwordInput = document.getElementById('passwordInput');
+            const password = passwordInput.value.trim();
+            const errorMessage = document.getElementById('errorMessage');
+            
+            console.log('Password entered:', password);
+            console.log('Expected password: 8thOctober2023');
+            
+            if (password === '8thOctober2023') {
+                console.log('Password correct');
+                errorMessage.style.display = 'none';
+                document.getElementById('passwordScreen').classList.add('hidden');
+                document.getElementById('mainContent').style.display = 'block';
+                initializeLetters();
+            } else {
+                console.log('Password incorrect');
+                errorMessage.style.display = 'block';
+                passwordInput.value = '';
+            }
+        }
+
+        // Enter key for password
+        document.addEventListener('DOMContentLoaded', function() {
+            const passwordInput = document.getElementById('passwordInput');
+            if (passwordInput) {
+                passwordInput.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        checkPassword();
+                    }
+                });
+            }
+        });
+
+        // Initialize letters
         function initializeLetters() {
             const lettersContainer = document.getElementById('lettersContainer');
+            if (!lettersContainer) return;
+            
             lettersContainer.innerHTML = '';
-
             const emotions = Object.keys(loveLetters);
-            emotions.forEach((emotion, index) => {
+            emotions.forEach((emotion) => {
                 const btn = document.createElement('button');
                 btn.className = 'letter-btn';
                 btn.textContent = emotion.charAt(0).toUpperCase() + emotion.slice(1);
@@ -1025,28 +1062,6 @@
                 initializeLetters();
             }
         }
-
-        // Password
-        function checkPassword() {
-            const password = document.getElementById('passwordInput').value;
-            if (password === '8thOctober2023') {
-                document.getElementById('passwordScreen').classList.add('hidden');
-                document.getElementById('mainContent').style.display = 'block';
-                initializeLetters();
-            } else {
-                document.getElementById('errorMessage').style.display = 'block';
-                document.getElementById('passwordInput').value = '';
-            }
-        }
-
-        // Enter key for password
-        document.addEventListener('DOMContentLoaded', function() {
-            document.getElementById('passwordInput').addEventListener('keypress', function(e) {
-                if (e.key === 'Enter') {
-                    checkPassword();
-                }
-            });
-        });
     </script>
 </body>
 </html>
